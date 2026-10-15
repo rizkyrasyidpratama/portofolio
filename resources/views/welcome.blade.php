@@ -65,11 +65,12 @@
 
         <!-- FOTO DIRI -->
         <div class="shrink-0">
-          <img 
-            src="{{ asset('images/profil.jpeg') }}" 
-            alt="Foto Rizky Rasyid Pratama" 
-            class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-white ring-4 ring-blue-100 shadow-md"
-          >
+<img 
+  src="/portofolio/images/profil.jpeg" 
+  alt="Foto Rizky Rasyid Pratama" 
+  class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-white ring-4 ring-blue-100 shadow-md"
+>
+
         </div>
 
       </div>
