@@ -19,18 +19,35 @@ jobs:
       - name: Move Public Files
         run: |
           mkdir dist
-          # 1. Salin semua aset dari folder public ke folder deploy
+          # 1. Menyalin semua hasil build dari folder public laptop ke folder deploy
           cp -r public/* dist/
           
-          # 2. HAPUS file index.php agar tidak membuat error di GitHub Pages
-          rm dist/index.php || true
-          
-          # 3. AMBIL file portofolio asli Anda dari resources/views dan ubah menjadi index.html
+          # 2. Mengubah sintaks Laravel @vite menjadi tag HTML link CSS asli secara otomatis
           if [ -f resources/views/welcome.blade.php ]; then
-            cp resources/views/welcome.blade.php dist/index.html
+            php -r "
+              \$content = file_get_contents('resources/views/welcome.blade.php');
+              
+              // Mencari nama file CSS dan JS unik hasil compiler Vite
+              \$cssFiles = glob('public/build/assets/*.css');
+              \$jsFiles = glob('public/build/assets/*.js');
+              
+              \$cssName = count(\$cssFiles) > 0 ? basename(\$cssFiles[0]) : '';
+              \$jsName = count(\$jsFiles) > 0 ? basename(\$jsFiles[0]) : '';
+              
+              \$htmlTags = '';
+              if (\$cssName) {
+                \$htmlTags .= '<link rel=\"stylesheet\" href=\"/portofolio/build/assets/' . \$cssName . '\">';
+              }
+              if (\$jsName) {
+                \$htmlTags .= '<script src=\"/portofolio/build/assets/' . \$jsName . '\"></script>';
+              }
+              
+              // Ganti teks @vite dengan tag HTML link agar dimengerti GitHub Pages
+              \$content = preg_replace('/@vite\(.*?\)/', \$htmlTags, \$content);
+              
+              file_put_contents('dist/index.html', \$content);
+            "
           fi
-          
-          # 4. Buat cadangan halaman untuk sistem router
           cp dist/index.html dist/404.html || true
 
       - name: Upload Artifact
