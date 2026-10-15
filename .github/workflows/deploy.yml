@@ -19,11 +19,18 @@ jobs:
       - name: Move Public Files
         run: |
           mkdir dist
-          # Langsung menyalin hasil rakitan dari laptop yang ada di folder public
+          # 1. Salin semua aset dari folder public ke folder deploy
           cp -r public/* dist/
+          
+          # 2. HAPUS file index.php agar tidak membuat error di GitHub Pages
+          rm dist/index.php || true
+          
+          # 3. AMBIL file portofolio asli Anda dari resources/views dan ubah menjadi index.html
           if [ -f resources/views/welcome.blade.php ]; then
             cp resources/views/welcome.blade.php dist/index.html
           fi
+          
+          # 4. Buat cadangan halaman untuk sistem router
           cp dist/index.html dist/404.html || true
 
       - name: Upload Artifact
