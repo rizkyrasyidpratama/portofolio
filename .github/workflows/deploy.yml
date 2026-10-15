@@ -2,7 +2,7 @@ name: Deploy Laravel to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -16,34 +16,35 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Install NPM and Build Assets
+        run: |
+          npm install
+          npm run build
+
       - name: Move Public Files
         run: |
           mkdir dist
-          # 1. Menyalin semua hasil build dari folder public laptop ke folder deploy
+          # 1. Menyalin semua hasil build dari server ke folder deploy
           cp -r public/* dist/
-          
-          # 2. Mengubah sintaks Laravel @vite menjadi tag HTML link CSS asli secara otomatis
+
+          # 2. Mengkonversi welcome.blade.php menjadi index.html secara bersih
           if [ -f resources/views/welcome.blade.php ]; then
             php -r "
               \$content = file_get_contents('resources/views/welcome.blade.php');
               
-              // Mencari nama file CSS dan JS unik hasil compiler Vite
-              \$cssFiles = glob('public/build/assets/*.css');
-              \$jsFiles = glob('public/build/assets/*.js');
+              // Cari file CSS dan JS hasil build otomatis di server
+              \$cssFiles = glob('dist/build/assets/*.css');
+              \$jsFiles = glob('dist/build/assets/*.js');
               
-              \$cssName = count(\$cssFiles) > 0 ? basename(\$cssFiles[0]) : '';
-              \$jsName = count(\$jsFiles) > 0 ? basename(\$jsFiles[0]) : '';
+              \$cssLink = count(\$cssFiles) > 0 ? '/portofolio/build/assets/' . basename(\$cssFiles[0]) : '';
+              \$jsSrc = count(\$jsFiles) > 0 ? '/portofolio/build/assets/' . basename(\$jsFiles[0]) : '';
               
-              \$htmlTags = '';
-              if (\$cssName) {
-                \$htmlTags .= '<link rel=\"stylesheet\" href=\"/portofolio/build/assets/' . \$cssName . '\">';
-              }
-              if (\$jsName) {
-                \$htmlTags .= '<script src=\"/portofolio/build/assets/' . \$jsName . '\"></script>';
-              }
+              // Ganti teks @vite dengan tag HTML murni (mendukung kutip tunggal dan ganda)
+              \$replacement = '';
+              if (\$cssLink) \$replacement .= '<link rel=\"stylesheet\" href=\"' . \$cssLink . '\">';
+              if (\$jsSrc) \$replacement .= '<script src=\"' . \$jsSrc . '\"></script>';
               
-              // Ganti teks @vite dengan tag HTML link agar dimengerti GitHub Pages
-              \$content = preg_replace('/@vite\(.*?\)/', \$htmlTags, \$content);
+              \$content = preg_replace('/@vite\(.*?\)/s', \$replacement, \$content);
               
               file_put_contents('dist/index.html', \$content);
             "
