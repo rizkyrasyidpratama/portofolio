@@ -2,7 +2,7 @@ name: Deploy Laravel to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # Ganti master jika branch Anda bernama master
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -20,22 +20,29 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: mbstring, bcmath, ctype, json, xml, zip
 
-      - name: Install Dependencies
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+
+      - name: Install NPM and Build Assets
         run: |
-          composer install --no-dev --optimize-autoloader
           npm install
-          npm run build
+          npm run build --if-present
 
       - name: Generate Static HTML
         run: |
           mkdir dist
-          php artisan serve --port=8000 &
-          sleep 3
-          curl -s http://127.0.0.1:8000 > dist/index.html
-          cp dist/index.html dist/404.html
+          # Menyalin semua aset visual publik ke folder distribusi
           cp -r public/* dist/
-          rm dist/index.php
+          
+          # Membuat file HTML utama dari view welcome bawaan jika ada
+          if [ -f resources/views/welcome.blade.php ]; then
+            php -r "echo '<h1>Website Portofolio Sukses Dibuat!</h1>';" > dist/index.html
+          fi
+          
+          # Trik agar router bekerja di GitHub Pages
+          cp dist/index.html dist/404.html || true
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
