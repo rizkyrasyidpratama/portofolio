@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio - Rizky Rasyid Pratama</title>
+    <link href="./dist/output.css" rel="stylesheet" />
+  </head>
+  <body
+    class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 scroll-smooth"
+  >
+    <!-- NAVBAR -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-700"
+    >
+      <nav
+        class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3"
+      >
+        <a
+          href="#hero"
+          class="text-xl font-bold text-indigo-600 dark:text-indigo-400"
+          >Rizky.RP</a
+        >
+
+        <ul class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <li><a href="#about" class="hover:text-indigo-600">Tentang</a></li>
+          <li><a href="#projects" class="hover:text-indigo-600">Proyek</a></li>
+          <li>
+            <a href="#experience" class="hover:text-indigo-600">Pengalaman</a>
+          </li>
+          <li>
+            <a href="#certificates" class="hover:text-indigo-600">Sertifikat</a>
+          </li>
+          <li><a href="#contact" class="hover:text-indigo-600">Kontak</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="themeToggle"
+            class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            <span class="dark:hidden">🌙 Dark</span>
+            <span class="hidden dark:inline">☀️ Light</span>
+          </button>
+          <button
+            id="menuBtn"
+            class="md:hidden px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600"
+            aria-label="Menu"
+          >
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      <ul
+        id="mobileMenu"
+        class="hidden md:hidden flex-col px-4 pb-3 text-sm font-medium gap-2"
+      >
+        <li><a href="#about" class="block py-1">Tentang</a></li>
+        <li><a href="#projects" class="block py-1">Proyek</a></li>
+        <li><a href="#experience" class="block py-1">Pengalaman</a></li>
+        <li><a href="#certificates" class="block py-1">Sertifikat</a></li>
+        <li><a href="#contact" class="block py-1">Kontak</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="max-w-6xl mx-auto px-4 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center gap-10"
+      >
+        <div class="text-center md:text-left md:w-3/5">
+          <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">
+            Halo, saya
+          </p>
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-3">
+            Rizky Rasyid Pratama
+          </h1>
+          <h2
+            class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4"
+          >
+            Informatics Student | Aspiring Full-Stack Developer
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-6">
+            Mahasiswa Informatika yang tertarik pada pengembangan web dan
+            mobile. Saya senang membangun antarmuka yang responsif dan
+            bercita-cita menjadi full-stack developer.
+          </p>
+
+          <div
+            class="flex flex-wrap justify-center md:justify-start gap-3 mb-6"
+          >
+            <a
+              href="assets/cv.pdf"
+              download
+              class="px-5 py-2.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition"
+              >Download CV</a
+            >
+            <a
+              href="#contact"
+              class="px-5 py-2.5 rounded-lg border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-slate-800 active:scale-95 transition"
+              >Kontak Saya</a
+            >
+          </div>
+
+          <div class="flex justify-center md:justify-start gap-4">
+            <!-- GitHub -->
+            <a
+              href="https://github.com/username"
+              target="_blank"
+              aria-label="GitHub"
+              class="hover:text-indigo-600"
+            >
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/in/username"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="hover:text-indigo-600"
+            >
+              <svg class="w-7 h-7" viewBox="0 0 24 24">
+                <rect width="24" height="24" rx="4" fill="currentColor" />
+                <text
+                  x="12"
+                  y="17"
+                  text-anchor="middle"
+                  font-size="12"
+                  font-weight="bold"
+                  font-family="Arial"
+                  class="fill-white dark:fill-slate-900"
+                >
+                  in
+                </text>
+              </svg>
+            </a>
+            <!-- Email -->
+            <a
+              href="mailto:email@example.com"
+              aria-label="Email"
+              class="hover:text-indigo-600"
+            >
+              <svg
+                class="w-7 h-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="md:w-2/5 flex justify-center">
+          <img
+            src="assets/profil.jpeg"
+            alt="Foto profil Rizky"
+            class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover aspect-square ring-4 ring-indigo-500/40 shadow-lg"
+          />
+        </div>
+      </section>
+
+      <!-- ABOUT & SKILLS -->
+      <section id="about" class="bg-slate-50 dark:bg-slate-800/50 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-4 text-center">Tentang Saya</h2>
+          <p
+            class="max-w-3xl mx-auto text-center text-slate-600 dark:text-slate-400 mb-10"
+          >
+            Saya mahasiswa Informatika yang tertarik pada teknologi web dan
+            aplikasi mobile. Saat ini saya belajar membangun antarmuka responsif
+            dengan Tailwind CSS sambil memperdalam backend menggunakan Laravel
+            dan MySQL. Tujuan saya adalah menjadi full-stack developer yang
+            mampu membuat produk dari sisi tampilan sampai server.
+          </p>
+
+          <div class="grid gap-6 md:grid-cols-3">
+            <!-- Frontend -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow">
+              <h3
+                class="font-semibold text-lg mb-4 text-indigo-600 dark:text-indigo-400"
+              >
+                Frontend
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#E34F26" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      H5
+                    </text></svg
+                  ><span class="text-sm">HTML5</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#1572B6" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      C3
+                    </text></svg
+                  ><span class="text-sm">CSS3</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#06B6D4" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      TW
+                    </text></svg
+                  ><span class="text-sm">Tailwind</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#F7DF1E" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#000"
+                      font-family="Arial"
+                    >
+                      JS
+                    </text></svg
+                  ><span class="text-sm">JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <!-- Backend & DB -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow">
+              <h3
+                class="font-semibold text-lg mb-4 text-indigo-600 dark:text-indigo-400"
+              >
+                Backend &amp; Database
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#777BB4" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      PHP
+                    </text></svg
+                  ><span class="text-sm">PHP</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#FF2D20" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      La
+                    </text></svg
+                  ><span class="text-sm">Laravel</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#00758F" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      My
+                    </text></svg
+                  ><span class="text-sm">MySQL</span>
+                </div>
+              </div>
+            </div>
+            <!-- Tools -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow">
+              <h3
+                class="font-semibold text-lg mb-4 text-indigo-600 dark:text-indigo-400"
+              >
+                Tools
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#F05032" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      Git
+                    </text></svg
+                  ><span class="text-sm">Git</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#007ACC" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      VS
+                    </text></svg
+                  ><span class="text-sm">VS Code</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-9 h-9" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="#A259FF" />
+                    <text
+                      x="20"
+                      y="25"
+                      text-anchor="middle"
+                      font-size="12"
+                      font-weight="bold"
+                      fill="#fff"
+                      font-family="Arial"
+                    >
+                      Fg
+                    </text></svg
+                  ><span class="text-sm">Figma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-10 text-center">Proyek</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition"
+          >
+            <img
+              src="https://placehold.co/640x360"
+              alt="Tangkapan layar KopiKraf"
+              class="w-full aspect-video object-cover"
+            />
+            <div class="p-5">
+              <h3 class="font-semibold text-lg mb-2">KopiKraf</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                Masalah: pemesanan kopi masih manual. Solusi: aplikasi mobile
+                untuk memilih menu dan memesan kopi.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Flutter</span
+                >
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Dart</span
+                >
+              </div>
+              <div class="flex gap-4 text-sm font-medium">
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Preview</a
+                >
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition"
+          >
+            <img
+              src="https://placehold.co/640x360"
+              alt="Tangkapan layar Inventaris Barang"
+              class="w-full aspect-video object-cover"
+            />
+            <div class="p-5">
+              <h3 class="font-semibold text-lg mb-2">Inventaris Barang</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                Masalah: data barang sulit dipantau. Solusi: aplikasi pencatat
+                barang dengan daftar dan detail item.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Flutter</span
+                >
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Dart</span
+                >
+              </div>
+              <div class="flex gap-4 text-sm font-medium">
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Preview</a
+                >
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition"
+          >
+            <img
+              src="https://placehold.co/640x360"
+              alt="Tangkapan layar Manajer Tugas Kuliah"
+              class="w-full aspect-video object-cover"
+            />
+            <div class="p-5">
+              <h3 class="font-semibold text-lg mb-2">Manajer Tugas Kuliah</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                Masalah: tugas kuliah sering terlewat. Solusi: aplikasi pencatat
+                tugas dengan daftar dinamis dan penanda selesai.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Flutter</span
+                >
+                <span
+                  class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >#Dart</span
+                >
+              </div>
+              <div class="flex gap-4 text-sm font-medium">
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Preview</a
+                >
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE & EDUCATION -->
+      <section id="experience" class="bg-slate-50 dark:bg-slate-800/50 py-16">
+        <div class="max-w-3xl mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-10 text-center">
+            Pengalaman &amp; Pendidikan
+          </h2>
+          <ol
+            class="relative border-l-2 border-indigo-300 dark:border-indigo-700 ml-3 space-y-10"
+          >
+            <li class="ml-6">
+              <span
+                class="absolute -left-[9px] w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-slate-50 dark:ring-slate-900"
+              ></span>
+              <h3 class="font-semibold text-lg">Mahasiswa Informatika</h3>
+              <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                Universitas Teknokrat Indonesia · 2024 – Sekarang
+              </p>
+              <ul
+                class="list-disc ml-5 mt-2 text-sm text-slate-600 dark:text-slate-400 space-y-1"
+              >
+                <li>Mempelajari pemrograman web, mobile, dan basis data.</li>
+                <li>
+                  Mengerjakan berbagai tugas praktikum dan proyek kelompok.
+                </li>
+              </ul>
+            </li>
+
+            <li class="ml-6">
+              <span
+                class="absolute -left-[9px] w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-slate-50 dark:ring-slate-900"
+              ></span>
+              <h3 class="font-semibold text-lg">SMA / SMK</h3>
+              <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                SMAN 14 Bandar Lampung · 2021 – 2024
+              </p>
+              <ul
+                class="list-disc ml-5 mt-2 text-sm text-slate-600 dark:text-slate-400 space-y-1"
+              >
+                <li>
+                  Lulus dengan jurusan yang mendukung minat di bidang teknologi.
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section id="certificates" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-10 text-center">
+          Sertifikasi &amp; Penghargaan
+        </h2>
+        <div class="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border-l-4 border-indigo-500"
+          >
+            <h3 class="font-semibold">Belajar Dasar Pemrograman Web</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Dicoding Indonesia
+            </p>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400">2025</p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border-l-4 border-indigo-500"
+          >
+            <h3 class="font-semibold">Responsive Web Design</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Coursera</p>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400">2025</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="bg-slate-50 dark:bg-slate-800/50 py-16">
+        <div class="max-w-xl mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-8 text-center">Kontak</h2>
+          <form class="space-y-4">
+            <div>
+              <label for="nama" class="block text-sm font-medium mb-1"
+                >Nama Lengkap</label
+              >
+              <input
+                type="text"
+                id="nama"
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label for="subjek" class="block text-sm font-medium mb-1"
+                >Subjek</label
+              >
+              <input
+                type="text"
+                id="subjek"
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label for="pesan" class="block text-sm font-medium mb-1"
+                >Pesan</label
+              >
+              <textarea
+                id="pesan"
+                rows="5"
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full py-2.5 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 hover:shadow-lg active:scale-95 transition"
+            >
+              Kirim Pesan
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 dark:border-slate-700 py-6">
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500 dark:text-slate-400"
+      >
+        <p>&copy; 2026 Rizky Rasyid Pratama. Hak cipta dilindungi.</p>
+        <div class="flex gap-4">
+          <a href="#about" class="hover:text-indigo-600">Tentang</a>
+          <a href="#projects" class="hover:text-indigo-600">Proyek</a>
+          <a href="#contact" class="hover:text-indigo-600">Kontak</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const html = document.documentElement;
+      if (localStorage.getItem("theme") === "dark") html.classList.add("dark");
+
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        html.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light",
+        );
+      });
+
+      const menu = document.getElementById("mobileMenu");
+      document.getElementById("menuBtn").addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      });
+    </script>
+  </body>
+</html>
