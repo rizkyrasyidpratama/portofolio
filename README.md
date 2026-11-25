@@ -1,58 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portofolio — Latihan 5a: RESTful API (GET Endpoints)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="docs/screenshots/foto-saya.png" alt="Foto Rizky Rasyid Pratama" width="150">
 
-## About Laravel
+|                 |                      |
+| --------------- | -------------------- |
+| **Nama**        | Rizky Rasyid Pratama |
+| **NPM**         | 24312116             |
+| **Mata Kuliah** | Pemrograman Web 2    |
+| **Branch**      | `Lat-5a_RestAPI_GET` |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+API read-only (metode GET) untuk menyajikan data portofolio publik dalam format JSON,
+dibangun dengan Laravel dan MySQL. Struktur tabel dan seeder berasal dari Latihan 4b.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Cara Menjalankan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```sh
+composer install
+cp .env.example .env        # Windows: copy .env.example .env
+php artisan key:generate
+# isi DB_* di .env (MySQL), buat database kosong, lalu:
+php artisan migrate:fresh --seed
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Daftar Endpoint
 
-## Contributing
+Base URL: `http://127.0.0.1:8000`. Semua respons memakai format `status`, `message`, `data`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Method | Endpoint                         | Fungsi                                    | Status                          |
+| ------ | -------------------------------- | ----------------------------------------- | ------------------------------- |
+| GET    | `/api/portfolio/profile`         | Data profil pemilik portofolio            | 200 / 404 jika profil belum ada |
+| GET    | `/api/portfolio/skills`          | Daftar skill, diurutkan per kategori      | 200                             |
+| GET    | `/api/portfolio/projects`        | Daftar proyek beserta skill-nya           | 200                             |
+| GET    | `/api/portfolio/projects/{slug}` | Detail satu proyek berdasarkan slug       | 200 / 404                       |
+| GET    | `/api/portfolio/experiences`     | Riwayat pendidikan, organisasi, dan kerja | 200                             |
+| GET    | `/api/portfolio/certificates`    | Daftar sertifikat                         | 200                             |
 
-## Code of Conduct
+Contoh respons sukses:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```json
+{
+    "status": "success",
+    "message": "Data skill berhasil diambil.",
+    "total": 7,
+    "data": [
+        {
+            "id": 1,
+            "name": "HTML5",
+            "category": "Frontend",
+            "level": "Advanced",
+            "icon": null
+        }
+    ]
+}
+```
 
-## Security Vulnerabilities
+## Bukti Pengujian
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> Ganti dengan screenshot Postman / Thunder Client / Bruno milikmu.
+> Simpan gambar di folder `docs/screenshots/` lalu sesuaikan nama file di bawah.
 
-## License
+| Endpoint                                             | Screenshot                                         |
+| ---------------------------------------------------- | -------------------------------------------------- |
+| `/api/portfolio/profile` (200 OK)                    | ![profile](docs/screenshots/profile.png)           |
+| `/api/portfolio/skills` (200 OK)                     | ![skills](docs/screenshots/skills.png)             |
+| `/api/portfolio/projects` (200 OK)                   | ![projects](docs/screenshots/projects.png)         |
+| `/api/portfolio/experiences` (200 OK)                | ![experiences](docs/screenshots/experiences.png)   |
+| `/api/portfolio/certificates` (200 OK)               | ![certificates](docs/screenshots/certificates.png) |
+| `/api/portfolio/projects/slug-palsu` (404 Not Found) | ![404](docs/screenshots/not-found.png)             |
+| Panel API Status di halaman welcome                  | ![welcome](docs/screenshots/welcome.png)           |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Penjelasan N+1 Query Problem
+
+> Tulis ulang dengan kata-katamu sendiri; draf ini hanya kerangka.
+
+N+1 Query Problem terjadi ketika aplikasi mengambil N data induk dengan 1 query, lalu mengambil
+data relasi tiap induk dengan query terpisah di dalam perulangan, sehingga totalnya 1 + N query.
+Pada endpoint `/api/portfolio/projects`, tanpa eager loading, 3 proyek berarti 1 query untuk
+proyek ditambah 3 query untuk skill masing-masing, yaitu 4 query. Dengan 100 proyek jadinya 101 query.
+
+Solusinya eager loading: `Project::with('skills')->get()`. Laravel hanya menjalankan 2 query
+(satu untuk proyek, satu untuk semua skill terkait) berapa pun jumlah proyeknya. Ini penting
+terutama di database cloud, karena setiap query menambah waktu bolak-balik jaringan.
+
+## Perbedaan Routing API: Laravel 10 vs Laravel 11
+
+> Tulis ulang dengan kata-katamu sendiri; draf ini hanya kerangka.
+
+- **Laravel 10:** `routes/api.php` sudah tersedia sejak instalasi dan otomatis terdaftar lewat
+  `RouteServiceProvider`, dengan prefix `/api` dan middleware group `api`.
+- **Laravel 11:** struktur proyek lebih ramping dan `routes/api.php` tidak dibuat secara default.
+  File tersebut diaktifkan dengan `php artisan install:api`, yang juga memasang Laravel Sanctum
+  dan mendaftarkan rute API di `bootstrap/app.php`.
+
+Pada proyek ini `php artisan install:api` dijalankan, dan 6 rute terdaftar di bawah `/api/portfolio`.
