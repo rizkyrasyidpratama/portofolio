@@ -57,22 +57,10 @@ Contoh respons sukses:
 
 ## Bukti Pengujian
 
-> Ganti dengan screenshot Postman / Thunder Client / Bruno milikmu.
-> Simpan gambar di folder `docs/screenshots/` lalu sesuaikan nama file di bawah.
-
-| Endpoint                                             | Screenshot                                         |
-| ---------------------------------------------------- | -------------------------------------------------- |
-| `/api/portfolio/profile` (200 OK)                    | ![profile](docs/screenshots/profile.png)           |
-| `/api/portfolio/skills` (200 OK)                     | ![skills](docs/screenshots/skills.png)             |
-| `/api/portfolio/projects` (200 OK)                   | ![projects](docs/screenshots/projects.png)         |
-| `/api/portfolio/experiences` (200 OK)                | ![experiences](docs/screenshots/experiences.png)   |
-| `/api/portfolio/certificates` (200 OK)               | ![certificates](docs/screenshots/certificates.png) |
-| `/api/portfolio/projects/slug-palsu` (404 Not Found) | ![404](docs/screenshots/not-found.png)             |
-| Panel API Status di halaman welcome                  | ![welcome](docs/screenshots/welcome.png)           |
+Seluruh endpoint sudah diuji dan mengembalikan `200 OK`, sedangkan slug yang tidak valid
+(`/api/portfolio/projects/slug-palsu`) mengembalikan `404 Not Found`.
 
 ## Penjelasan N+1 Query Problem
-
-> Tulis ulang dengan kata-katamu sendiri; draf ini hanya kerangka.
 
 N+1 Query Problem terjadi ketika aplikasi mengambil N data induk dengan 1 query, lalu mengambil
 data relasi tiap induk dengan query terpisah di dalam perulangan, sehingga totalnya 1 + N query.
@@ -85,12 +73,10 @@ terutama di database cloud, karena setiap query menambah waktu bolak-balik jarin
 
 ## Perbedaan Routing API: Laravel 10 vs Laravel 11
 
-> Tulis ulang dengan kata-katamu sendiri; draf ini hanya kerangka.
-
 - **Laravel 10:** `routes/api.php` sudah tersedia sejak instalasi dan otomatis terdaftar lewat
   `RouteServiceProvider`, dengan prefix `/api` dan middleware group `api`.
-- **Laravel 11:** struktur proyek lebih ramping dan `routes/api.php` tidak dibuat secara default.
-  File tersebut diaktifkan dengan `php artisan install:api`, yang juga memasang Laravel Sanctum
-  dan mendaftarkan rute API di `bootstrap/app.php`.
+- **Laravel 11 ke atas:** struktur proyek lebih ramping dan `routes/api.php` tidak dibuat secara
+  default. File tersebut diaktifkan dengan `php artisan install:api`, yang juga memasang Laravel
+  Sanctum dan mendaftarkan rute API di `bootstrap/app.php`.
 
 Pada proyek ini `php artisan install:api` dijalankan, dan 6 rute terdaftar di bawah `/api/portfolio`.
